@@ -1,1 +1,5 @@
 README.md
+{{ if ne .chezmoi.os "darwin" -}}
+{{   include "run_0-install-mac-app.sh"  }}
+{{   include "run_2-install-lang.sh"  }}
+{{ end }}

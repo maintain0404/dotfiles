@@ -1,0 +1,29 @@
+#! /bin/zsh
+
+function install_tool {
+    {{ if eq .chezmoi.os "linux" -}}
+        apt update && apt install -y $1
+    {{ else if eq .chezmoi.os "darwin" -}}
+        brew install $1
+    {{ end -}}
+}
+
+# Install exa
+install_tool exa
+
+# Install jq
+install_tool jq
+
+# Install tldr client, tealdeer do not support apt
+{{ if eq .chezmoi.os "darwin" -}}
+    brew install tealdeer
+{{ end -}}
+
+# Install fd
+install_tool fd
+
+# Install direnv
+install_tool direnv
+
+# Install tldr client
+install_tool tealdeer
