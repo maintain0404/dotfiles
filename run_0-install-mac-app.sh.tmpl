@@ -1,9 +1,9 @@
 #! /bin/bash
-# EXPERIMENTAL!
 
-# Install brew if not exists.
-if [ -n $(which brew 1> /dev/null || echo $?) ] 
-then
+{{ define "MacApp" }}
+if [ $(command -v brew) ]; then
+    echo -e "\033[1;33mWarning\033[0m brew is already installed!!!"
+else
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 fi
 # Install karabiner
@@ -14,3 +14,9 @@ brew install visual-studio-code
 brew install --cask iterm2
 # Install docker
 brew install --cask docker
+{{ end }}
+
+# Install brew if not exists.
+{{ if eq .chezmoi.os "darwin" }}
+{{ template "MacApp" .}}
+{{ end }}

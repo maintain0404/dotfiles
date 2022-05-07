@@ -1,0 +1,39 @@
+#! /bin/zsh
+
+function warn_already_installed {
+    echo "\033[1;33mWarning\033[0m: $1 is already installed!!!"
+}
+
+{{ define "InstallLang" }}
+# Install pyenv(Python)
+if [ -d "$HOME/.pyenv" ]; then
+    warn_already_installed pyenv
+else
+    curl https://pyenv.run | zsh
+fi
+
+# Install nvm(Node.js)
+if [ -d "$HOME/.nvm" ]; then
+    warn_already_installed nvm
+else
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
+fi
+
+# Install gvm(Go)
+if [ -d "$HOME/.gvm" ]; then
+    warn_already_installed gvm
+else
+    zsh < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+fi
+
+# Install rust
+if [ -d "$HOME/.cargo" ]; then
+    warn_already_installed rustup
+else
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | zsh
+fi
+{{ end }}
+
+{{ if eq .chezmoi.os "darwin" }}
+{{ template "InstallLang" . }}
+{{ end }}

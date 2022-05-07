@@ -1,7 +1,8 @@
-#! /bin/zsh
+#! /bin/bash
 # Install zsh
-if [ -n $(which zsh 1> /dev/null || echo $?) ]
-then 
+if [ $(command -v zsh) ]; then 
+    echo "Zsh is already installed."
+else
 {{ if eq .chezmoi.os "linux" -}}
     apt update && apt install -y zsh
 {{ else if eq .chezmoi.os "darwin" -}}
@@ -10,7 +11,8 @@ then
 fi
 
 # Install oh-my-zsh
-if [ -z ${ZSH} ]
-then
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ -d "${HOME}/.oh-my-zsh" ]; then
+    echo "Oh-my-zsh is already installed."
+else
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi

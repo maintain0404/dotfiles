@@ -8,22 +8,52 @@ function install_tool {
     {{ end -}}
 }
 
+function prepare_home_bin {
+    if [ -d "$HOME/bin" ]; then
+        echo "$HOME/bin is already exists!!!"
+    else
+        mkdir $HOME/bin
+    fi
+}
+
+prepare_home_bin
+
+
 # Install exa
 install_tool exa
 
 # Install jq
 install_tool jq
 
-# Install tldr client, tealdeer do not support apt
-{{ if eq .chezmoi.os "darwin" -}}
-    brew install tealdeer
-{{ end -}}
-
 # Install fd
-install_tool fd
+{{ if eq .chezmoi.os "darwin" -}}
+    brew install fd
+{{ else if eq .chezmoi.os "linux" -}}
+    apt install -y fd-find
+{{ end -}}
 
 # Install direnv
 install_tool direnv
 
 # Install tldr client
-install_tool tealdeer
+# https://github.com/dbrgn/tealdeer
+{{ if eq .chezmoi.os "darwin" -}}
+    brew install tealdeer
+{{ else if eq .chezmoi.os "linux" -}}
+    wget -c https://github.com/dbrgn/tealdeer/releases/download/v1.5.0/tealdeer-linux-x86_64-musl -O $HOME/bin/tldr && \
+    chmod +x $HOME/bin/tldr
+{{ end -}}
+
+# Install ripgrep-all
+# https://github.com/phiresky/ripgrep-all
+{{ if eq .chezmoi.os "darwin" -}}
+    brew install ripgrep-all
+{{ else if eq .chezmoi.os "linux" -}}
+    apt install -y ripgrep pandoc poppler-utils ffmpeg
+    wget -c https://github.com/phiresky/ripgrep-all/releases/download/v0.9.6/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl.tar.gz -O $HOME/bin/rga && \
+    chmod +x $HOME/bin/rga
+{{ end -}}
+
+# Install fzf
+# https://github.com/junegunn/fzf
+install_tool fzf
