@@ -149,6 +149,7 @@ if [ -d "$HOME/.pyenv" ]; then
 	export PATH="$HOME/.pyenv/bin:$PATH"
 	eval "$(pyenv init --path)"
 	eval "$(pyenv virtualenv-init -)"
+	export POETRY_HOME="$HOME/.local/share/pypoetry"
 fi
 
 # Gvm
