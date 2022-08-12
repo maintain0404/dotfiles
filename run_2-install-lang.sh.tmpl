@@ -35,6 +35,13 @@ if [ -d "$HOME/.cargo" ]; then
 else
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | zsh
 fi
+
+# Install sdkman(for Java, Kotlin ...).
+if [ -d "$HOME/.sdkman"]; then
+    warn_already_installed sdkman
+else
+    curl -s "https://get.sdkman.io" | bash
+fi
 {{ end }}
 
 {{ if eq .chezmoi.os "darwin" }}

@@ -159,3 +159,9 @@ fi
 if [ -d "$HOME/.cargo" ]; then
 	export PATH=$HOME/.cargo/bin:$PATH
 fi
+
+# sdkman
+if [ -d "$HOME/.sdkman" ]; then
+	export SDKMAN_DIR="$HOME/.sdkman"
+	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
