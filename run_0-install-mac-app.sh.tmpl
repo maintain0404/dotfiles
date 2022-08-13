@@ -4,7 +4,7 @@
 if [ $(command -v brew) ]; then
     echo -e "\033[1;33mWarning\033[0m brew is already installed!!!"
 else
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 # Install karabiner
 brew install karabiner-elements
