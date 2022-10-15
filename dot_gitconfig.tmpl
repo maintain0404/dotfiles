@@ -1,0 +1,11 @@
+[user]
+    email = {{ .email | quote }}
+    name = Taein Min
+[core]
+    editor = code --wait
+[init]
+    defaultBranch = main
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
