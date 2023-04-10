@@ -44,6 +44,6 @@ else
 fi
 {{ end }}
 
-{{ if eq .chezmoi.os "darwin" }}
+{{ if .install_lang }}
 {{ template "InstallLang" . }}
 {{ end }}

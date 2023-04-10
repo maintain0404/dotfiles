@@ -105,6 +105,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Keybinding
+bindkey -e 
+bindkey "\\\e[1;5C" forward-word
+bindkey "\\\e[1;5D" backward-word
+
 # Direnv
 if [ $(command -v direnv) ]; then
     eval "$(direnv hook zsh)"
