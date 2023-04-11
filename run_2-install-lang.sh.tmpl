@@ -37,7 +37,7 @@ else
 fi
 
 # Install sdkman(for Java, Kotlin ...).
-if [ -d "$HOME/.sdkman"]; then
+if [ -d "$HOME/.sdkman" ]; then
     warn_already_installed sdkman
 else
     curl -s "https://get.sdkman.io" | bash

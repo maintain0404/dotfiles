@@ -1,5 +1,6 @@
 #! /bin/bash
 # Install zsh
+echo "Instaling zsh..."
 if [ $(command -v zsh) ]; then 
     echo "Zsh is already installed."
 else
@@ -11,6 +12,7 @@ else
 fi
 
 # Install oh-my-zsh
+echo "Installing ohmyzsh..."
 if [ -d "${HOME}/.oh-my-zsh" ]; then
     echo "Oh-my-zsh is already installed."
 else

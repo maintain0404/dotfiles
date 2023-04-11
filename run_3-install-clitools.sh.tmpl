@@ -7,8 +7,12 @@ function execute_with_sudo() {
 {{ define "InstallTool" }}
 function install_tool {
     {{ if eq .chezmoi.os "linux" -}}
-        execute_with_sudo apt update 
-        execute_with_sudo apt install -y $1
+        {{ if .use_sudo }} 
+            execute_with_sudo apt update 
+            execute_with_sudo apt install -y $1
+        {{ else }} 
+            apt update && apt install -y $1 
+        {{ end }}
     {{ else if eq .chezmoi.os "darwin" -}}
         brew install $1
     {{ end -}}
