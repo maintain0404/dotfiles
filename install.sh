@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 echo "Install chezmoi..."
-sh -c "$(curl -fsLS get.chezmoi.io)" maintain0404
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
 
 echo "Now setup..."
-init_command="chezmoi init"
+init_command="chezmoi init maintain0404"
 
 add_init_option() {
     local type=$1
