@@ -2,24 +2,32 @@
 set +e
 
 {{ define "MacApp" }}
+# Install brew if not exists.
 if [ $(command -v brew) ]; then
     echo -e "\033[1;33mWarning\033[0m brew is already installed!!!"
 else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
 # Install karabiner
 brew install karabiner-elements
+
 # Install visual-studio-code
 brew install visual-studio-code
+
 # Install iterm2
 brew install --cask iterm2
+
 # Install docker
 # --force option is used to force reinstall
 # https://github.com/Homebrew/brew/issues/16309
 brew install --cask docker --force
+
+# Install raycast
+brew install --cask raycast
+
 {{ end }}
 
-# Install brew if not exists.
 {{ if eq .chezmoi.os "darwin" }}
 {{ template "MacApp" .}}
 {{ end }}
