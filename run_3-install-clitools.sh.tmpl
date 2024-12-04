@@ -67,7 +67,16 @@ install_tool direnv
 # Install fzf
 # https://github.com/junegunn/fzf
 install_tool fzf
+
+# Install mise
+{{ if lookPath "mise" -}}
+    echo "mise is already installed!!!"
+{{ else }}
+    curl https://mise.run | sh
 {{ end }}
+
+{{ end }}
+
 {{ if .install_tool }}
 {{ template "InstallTool" . }}
 {{ end}}

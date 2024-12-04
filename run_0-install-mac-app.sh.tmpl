@@ -9,22 +9,31 @@ else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install karabiner
-brew install karabiner-elements
+function install_app_by_brew() {
+    last_param=${!#}
+    echo -e "\nChecking and installing \033[1;32m$last_param\033[0m ..."
+    brew info "$last_param"
+    if [ $? -ne 0 ]; then
+        brew install "$@"
+    fi
+}
 
-# Install visual-studio-code
-brew install visual-studio-code
+# Install karabiner-elements
+install_app_by_brew karabiner-elements
+
+# Install visual-studio-code 
+install_app_by_brew visual-studio-code
 
 # Install iterm2
-brew install --cask iterm2
+install_app_by_brew --cask iterm2
 
 # Install docker
 # --force option is used to force reinstall
 # https://github.com/Homebrew/brew/issues/16309
-brew install --cask docker --force
+install_app_by_brew --cask --force docker
 
 # Install raycast
-brew install --cask raycast
+install_app_by_brew --cask raycast
 
 {{ end }}
 
