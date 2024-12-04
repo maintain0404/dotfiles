@@ -1,11 +1,17 @@
+{{- $editor := "cursor" -}}
+{{- if lookPath "cursor" -}}
+    {{- $editor = "cursor" -}}
+{{- else -}}
+    {{- $editor = "code" -}}
+{{- end -}}
 [user]
     email = {{ .email | quote }}
     name = Taein Min
 [core]
-    editor = code --wait
+    editor = {{ $editor }} --wait
 [init]
     defaultBranch = main
 [diff]
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+    tool = {{ $editor }}        
+[difftool "{{ $editor }}"]
+    cmd = "{{ $editor }} --wait --diff $LOCAL $REMOTE"
