@@ -149,11 +149,9 @@ if [ -d "$HOME/.nvm" ]; then
 	[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-# Pyenv
-if [ -d "$HOME/.pyenv" ]; then
-	export PATH="$HOME/.pyenv/bin:$PATH"
-	eval "$(pyenv init --path)"
-	eval "$(pyenv virtualenv-init -)"
+# uv & poetry
+if [ -f "$HOME/.cargo/bin/uv" ]; then
+	export PATH="$HOME/.cargo/bin:$PATH"
 	export POETRY_HOME="$HOME/.local/share/pypoetry"
 fi
 

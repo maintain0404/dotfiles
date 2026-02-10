@@ -5,11 +5,11 @@ function warn_already_installed {
 }
 
 {{ define "InstallLang" }}
-# Install pyenv(Python)
-if [ -d "$HOME/.pyenv" ]; then
-    warn_already_installed pyenv
+# Install uv(Python)
+if [ -f "$HOME/.cargo/bin/uv" ]; then
+    warn_already_installed uv
 else
-    curl https://pyenv.run | zsh
+    curl -LsSf https://astral.sh/uv/install.sh | sh
     POETRY_HOME="${HOME}/.local/share/pypoetry"
     curl -sSL https://install.python-poetry.org | python3 -
     ln -s $HOME/.local/share/pypoetry/bin/poetry $HOME/bin/poetry
