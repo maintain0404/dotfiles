@@ -110,22 +110,6 @@ bindkey -e
 bindkey "\\\e[1;5C" forward-word
 bindkey "\\\e[1;5D" backward-word
 
-# Direnv
-if [ $(command -v direnv) ]; then
-    eval "$(direnv hook zsh)"
-fi
-
-# Exa alias
-if [ $(command -v exa) ]; then
-    alias es='exa'
-    alias el='exa -l'
-fi
-
-# tldr alias
-if [ $(command -v tldr) ]; then
-    alias tldr='tldr --color always'
-fi
-
 # rigrep-all + fzf
 rga-fzf() {
 	RG_PREFIX="rga --files-with-matches"
@@ -140,34 +124,6 @@ rga-fzf() {
 	echo "opening $file" &&
 	xdg-open "$file"
 }
-
-# Added automatically.
-# NVM
-if [ -d "$HOME/.nvm" ]; then
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-	[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
-
-# uv & poetry
-if [ -f "$HOME/.cargo/bin/uv" ]; then
-	export PATH="$HOME/.cargo/bin:$PATH"
-	export POETRY_HOME="$HOME/.local/share/pypoetry"
-fi
-
-# Gvm
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
-# RustUp
-if [ -d "$HOME/.cargo" ]; then
-	export PATH=$HOME/.cargo/bin:$PATH
-fi
-
-# sdkman
-if [ -d "$HOME/.sdkman" ]; then
-	export SDKMAN_DIR="$HOME/.sdkman"
-	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-fi
 
 # mise
 eval "$(mise activate)"

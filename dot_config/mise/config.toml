@@ -1,0 +1,55 @@
+# =============================================================================
+# Global mise configuration (~/.config/mise/config.toml)
+# =============================================================================
+# 사용법:
+#   mise install                     # 모든 도구 설치
+#   mise run setup                   # 전체 셋업 (도구 + 앱 + 쉘)
+#
+# 참고: https://mise.jdx.dev/configuration.html
+# =============================================================================
+
+[settings]
+# 아래 설정은 mise 최신 버전에서 지원됩니다.
+auto_install = true                                           # 기본값: true
+idiomatic_version_file_enable_tools = ["node", "python", "java", "go"]  # .nvmrc, .python-version 등 지원
+
+# ── 언어 런타임 설정 ─────────────────────────────────────────────────────────────
+python = { "uv_venv_auto" = "create|source" }  # uv를 우선 사용하도록 함.
+
+
+[tools]
+# mise install 또는 mise use 로 설치됩니다.
+# 참고: https://mise.jdx.dev/dev-tools/
+
+# ── 언어 런타임 ─────────────────────────────────────────────────────────────
+node = "lts"                                   # Node.js LTS (nvm 대체)
+python = "latest"                              # Python 최신 (uv 대체)
+go = "latest"                                  # Go 최신 (gvm 대체)
+java = "latest"                                # Java 최신 (sdkman 대체)
+rust = "latest"                                # Rust 최신 (cargo, rustup 포함)
+
+# ── Python 생태계 도구 ──────────────────────────────────────────────────────
+uv = "latest"                                  # 빠른 Python 패키지 관리자
+
+# ── node.js 생태계 도구 ──────────────────────────────────────────────────────
+pnpm = "latest"                                # Node.js 패키지 관리자 (pnpm 대체)
+
+# ── CLI 도구 ────────────────────────────────────────────────────────────────
+eza = "latest"                                 # 모던 ls 대체 (exa 후속작)
+jq = "latest"                                  # JSON 프로세서
+fd = "latest"                                  # find 대체
+fzf = "latest"                                 # 퍼지 파인더
+tlrc = "latest"                                # tldr 클라이언트
+ripgrep = "latest"                             # 빠른 grep 대체 (rg)
+ripgrep-all = "latest"                         # 모든 파일 타입 검색 (rga)
+
+# --- LLM ─────────────────────────────────────────────────────────────────────
+opencode = 'latest'
+gemini-cli = "latest"
+claude = "latest"
+codex = "latest"
+
+[shell_alias]
+es = "eza -l --icons=always"
+el = "eza --long --git --icons=always"
+tldr = "tlrc --color always"

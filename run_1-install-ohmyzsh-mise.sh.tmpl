@@ -18,3 +18,10 @@ if [ -d "${HOME}/.oh-my-zsh" ]; then
 else
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
+
+# Install mise
+if command -v mise &> /dev/null; then
+    echo "mise is already installed."
+else
+    curl https://mise.run | sh
+fi
