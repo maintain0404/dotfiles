@@ -49,6 +49,11 @@ gemini-cli = "latest"
 claude = "latest"
 codex = "latest"
 
+# --- 기타 ─────────────────────────────────────────────────────────────────────
+"npm:@googleworkspace/cli" = "latest"          # Google Workspace CLI (npm 패키지)
+gcloud = "latest"
+opentofu = "latest"                               # OpenTofu CLI (Terraform 대체)
+
 [shell_alias]
 es = "eza -l --icons=always"
 el = "eza --long --git --icons=always"
