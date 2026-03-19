@@ -12,7 +12,7 @@ fi
 function install_app_by_brew() {
     last_param=${!#}
     echo -e "\nChecking and installing \033[1;32m$last_param\033[0m ..."
-    brew list --cask "$last_param"
+    brew list "$@"
     if [ $? -ne 0 ]; then
         brew install "$@"
     fi
@@ -49,6 +49,9 @@ install_app_by_brew --cask arc
 
 # Install Dia
 install_app_by_brew --cask thebrowsercompany-dia
+
+# Install Kaset (Native Youtube Music App)
+install_app_by_brew sozercan/repo/kaset
 
 {{ end }}
 
