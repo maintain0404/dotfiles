@@ -49,10 +49,12 @@ gemini-cli = "latest"
 claude = "latest"
 codex = "latest"
 
-# --- 기타 ─────────────────────────────────────────────────────────────────────
+# --- 웹 서비스/인프라 제어 도구 ─────────────────────────────────────────────────────────────────────
 "npm:@googleworkspace/cli" = "latest"          # Google Workspace CLI (npm 패키지)
-gcloud = "latest"
-opentofu = "latest"                               # OpenTofu CLI (Terraform 대체)
+gcloud = "latest"                              # Google Cloud CLI
+opentofu = "latest"                            # OpenTofu CLI (Terraform 대체)
+gh = "latest"                                  # GitHub CLI
+firebase = "latest"                            # Firebase CLI
 
 [shell_alias]
 es = "eza -l --icons=always"
