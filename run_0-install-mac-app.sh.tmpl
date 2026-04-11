@@ -53,6 +53,13 @@ install_app_by_brew --cask thebrowsercompany-dia
 # Install Kaset (Native Youtube Music App)
 install_app_by_brew sozercan/repo/kaset
 
+# Install Font
+D2CODING_FONT_URL="https://github.com/naver/d2codingfont/releases/download/VER1.3.2/D2Coding-Ver1.3.2-20180524.zip"
+curl -L "$D2CODING_FONT_URL" -o "D2Coding.zip"
+unzip -q "D2Coding" -d "tempfontdir"
+cp tempfontdir/D2Coding/*.ttc "$HOME/Library/Fonts/"
+rm -r "D2Coding.zip" "tempfontdir"
+
 {{ end }}
 
 {{ if eq .chezmoi.os "darwin" }}
