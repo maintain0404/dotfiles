@@ -1,0 +1,23 @@
+#! /bin/bash
+set +e
+
+{{ define "WslApp" }}
+powershell.exe "winget install --id=Obsidian.Obsidian -e --source=winget"
+
+powershell.exe "winget install --id=Microsoft.VisualStudioCode -e --source=winget"
+
+powershell.exe "winget install --id=TableClothProject.TableCloth -e --source=winget"
+
+powershell.exe "winget install raycast"
+
+{{ end }}
+
+{{ define "WslZshrc" }}
+
+{{ end }}
+
+{{ if eq .chezmoi.os "linux" }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+{{ template "WslApp" .}}
+{{   end }}
+{{ end }}

@@ -1,0 +1,4 @@
+#!/bin/bash
+# WSL Only
+
+obsidian.exe "$@" 2>&1 | tr -d '\r'
