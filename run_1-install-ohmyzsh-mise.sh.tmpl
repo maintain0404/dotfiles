@@ -1,15 +1,5 @@
 #! /bin/bash
-# Install zsh
-echo "Instaling zsh..."
-if [ $(command -v zsh) ]; then 
-    echo "Zsh is already installed."
-else
-{{ if eq .chezmoi.os "linux" -}}
-    apt update && apt install -y zsh
-{{ else if eq .chezmoi.os "darwin" -}}
-    brew install zsh
-{{ end -}}
-fi
+set +e
 
 # Install oh-my-zsh
 echo "Installing ohmyzsh..."
