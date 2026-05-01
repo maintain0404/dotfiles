@@ -51,6 +51,7 @@ opencode = 'latest'
 gemini-cli = "latest"
 claude = "latest"
 codex = "latest"
+"npm:happy" = "1.1.7"
 
 # --- 웹 서비스/인프라 제어 도구 ─────────────────────────────────────────────────────────────────────
 "npm:@googleworkspace/cli" = "latest"          # Google Workspace CLI (npm 패키지)
@@ -63,3 +64,6 @@ firebase = "latest"                            # Firebase CLI
 es = "eza -l --icons=always"
 el = "eza --long --git --icons=always"
 tldr = "tlrc --color always"
+
+[env]
+HAPPY_SERVER_URL = "{{ .happy_server_url }}"
